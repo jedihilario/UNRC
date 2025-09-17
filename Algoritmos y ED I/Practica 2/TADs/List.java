@@ -1,28 +1,28 @@
 package TADs;
 
 public interface List <T> {
+    
+    // Getters
+    public T getFirst ();
+    public T getLast ();
+    public T get (int p);
+    public int length ();
+    public boolean isEmpty ();
 
     // Adding methods
-    void append (T x);
-    void prepend (T x);
-    void insert (T x, int i);
+    public void append (T x);
+    public void prepend (T x);
+    public void insert (T x, int p);
 
     // Deleting methods
-    void removeLast ();
-    void removeFirst ();
-    void delete (int i);
-
-    // Getters
-    T getFirst ();
-    T getLast ();
-    T get (int i);
-    int length ();
-    boolean isEmpty ();
+    public void removeLast ();
+    public void removeFirst ();
+    public void delete (int p);
 
     // Searching
-    int search (T x);
-    T find (T x);
+    public int search (T x);
+    public T find (T x);
 
     // Printing
-    void printList ();
+    public void printList ();
 }
