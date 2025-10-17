@@ -1,0 +1,15 @@
+# Executable files
+*.exe
+*.out
+
+# Log Files
+*.log
+
+# JVM files
+*.class
+
+# Latex render files
+*.fdb_latexmk
+*.aux
+*.fls
+*.synctex.gz
