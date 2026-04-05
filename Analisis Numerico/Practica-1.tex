@@ -1,0 +1,77 @@
+\documentclass[DIN, pagenumber=false, fontsize=11pt, parskip=half]{scrartcl}
+
+\usepackage{amssymb}
+\usepackage[spanish]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{textcomp}
+
+% for code
+\usepackage{listings}
+\usepackage{listingsutf8}
+\usepackage{xcolor}
+
+\definecolor{green}{RGB}{64,160,43}
+\definecolor{gray}{RGB}{76,79,105}
+\definecolor{purple}{RGB}{136, 57, 239}
+\definecolor{background}{RGB}{239,241,245}
+
+\lstdefinestyle{mystyle}{
+	backgroundcolor=\color{background},
+    commentstyle=\color{gray},
+    keywordstyle=\color{purple},
+    numberstyle=\tiny\color{gray},
+    stringstyle=\color{green},
+    basicstyle=\sffamily\scriptsize,
+    breakatwhitespace=false,
+    breaklines=true,
+    captionpos=b,
+    keepspaces=true,
+    numbersep=5pt,
+    showspaces=false,
+    showstringspaces=false,
+    showtabs=false,
+    tabsize=2,
+	frame=single
+}
+
+\lstset{style=mystyle}
+\lstset{inputencoding=utf8/latin1}
+
+\setlength{\parindent}{0em}
+
+% set section in CM
+\setkomafont{section}{\normalfont\bfseries\Large}
+
+\newcommand{\mytitle}[1]{{\noindent\Large\textbf{#1}}}
+
+%===================================
+\begin{document}
+
+\noindent\textbf{Análisis Numerico} \hfill \textbf{UNRC}\\
+2242 \hfill Hilario Yáñez Bertola\\
+
+\mytitle{Práctica 1: Ecuaciones en una variable \hfill \small{\today}}
+
+\begin{enumerate}
+
+    \item Para encontrar una solución positiva a $\tan (x) = 2x$, consideremos $f(x) = \tan (x) - 2x$.
+    Es claro que $f(\frac{1}{2})<0$ ya que $\tan (\frac{1}{2}) < \tan (\frac{\pi}{4}) = 1 = 2 \cdot 1$,
+    y se puede ver que $f(\frac{3}{2}) > 0$. Como $\tan (x)$ es continua en $\mathbb{R} \setminus \bigl\{ \pi \cdot (k + \frac{1}{2}), k \in \mathbb{Z} \bigr\}$,
+    también lo será $f$ gracias a la continuidad de $2x$, y lo será en particular en $[\frac{1}{2}, \frac{3}{2}]$.
+    De esta manera, estamos en condiciones de aplicar el método de bisección para aproximar una raíz de $f$.
+    Luego, para que el error relativo sea menor que $10^{-5}$ tenemos que:
+
+    \[ \frac{|e_n|}{|p|} < \frac{\frac{\frac{3}{2} - \frac{1}{2}}{2^n}}{\frac{3}{2}}
+    = \frac{1}{3 \cdot 2^{n-1}} < 10^{-5} \iff \log_2 (\frac{10^5}{3}) + 1 < n \]
+
+    Usando que $\lceil \log_2(\frac{10^5}{3}) \rceil = 16$, se deduce que para $n > 17$ se
+    obtiene una aproximación tan chica como se quiere.
+
+    Con la implementación adjunta al final del documento, se obtiene el resultado $x \approx 1.16556$.
+
+    \lstinputlisting[language=Python, firstline=4, lastline=26]{single-variable.py}
+
+\end{enumerate}
+
+\end{document}

@@ -4,6 +4,7 @@
 
 # Log Files
 *.log
+*.aux
 
 # JVM files
 *.class
