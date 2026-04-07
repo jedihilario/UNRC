@@ -53,6 +53,8 @@
 
 \mytitle{Práctica 1: Ecuaciones en una variable \hfill \small{\today}}
 
+\section{Ejercicios}
+
 \begin{enumerate}
 
     \item Para encontrar una solución positiva a $\tan (x) = 2x$, consideremos $f(x) = \tan (x) - 2x$.
@@ -70,8 +72,44 @@
 
     Con la implementación adjunta al final del documento, se obtiene el resultado $x \approx 1.16556$.
 
-    \lstinputlisting[language=Python, firstline=4, lastline=26]{single-variable.py}
+    \item Para estimar el valor de $x = \sqrt[3]{2}$, igualando a $0$ puedo
+    Obtener $f(x) = x^3 - 2$, consiguiendo así reducir el problema a uno del tipo $f(x) = 0$.
+    Veamos rápidamente que:
 
+    \begin{itemize}
+        \item $f$ es continua en todo $\mathbb{R}$, por ser polinómica.
+        \item $f(0) = -2 < 0$.
+        \item $f(2) = 8 - 2 = 6 > 0$.
+        \item $f$ es continua, en particular, sobre $[0,2]$.
+    \end{itemize}
+
+    De esta forma, estamos en condiciones de aplicar el método de bisección para hallar una raíz de $f$.
+    Aplicando 20 iteraciones de éste método, se consigue el valor $x \approx 1.25992107$.
+
+    \item Consideremos $f(x) = x^3 + x - 4$. Es fácil ver que $f$ es continua $\forall x \in \mathbb{R}$,
+    en particular sobre $[1,4]$. Además, $f(1) = -2 < 0$ y $f(4) = 64 > 0$, por lo que estamos en condiciones de aplicar el teorema 2.1.
+    
+    Podemos asegurar que $|e_n| \le \frac{3}{2^n}$. Luego, basta pedir $\frac{3}{2^n} \le 10^{-3}$ para asegurar que
+    el error absoluto es tan chico como se quiere. Despejando $n$:
+
+    \[ \frac{3}{2^n} \le 10^{-3} \iff 3000 \le 2^n \iff \log_2(3000) \approx 11.55 \le n \]
+
+    Por lo que para 12 iteraciones se consigue una aproximación lo suficientemente buena, una vez ejecutado, el valor obtenido es $x \approx 1.37$.
+
+    \item Sea $f(x) = 2 + \cos (e^x - 2) - e^x$. Se puede ver usando desigualdades que $f(1.5)<0<f(0.5)$.
+    Además, f es continua sobre $[0.5,1.5]$, gracias a ser composición y sumas de continuas. De esta forma,
+    los teoremas de bisección son válidos. Para acotar el error por $10^{-3}$:
+
+    \[ |e_n| \le \frac{1}{2^n} < 10^{-3} \iff \log_2 (1000) < n \iff 9 < n \]
+
+    De esta forma, se puede aplicar el método 9 veces para obtener $x \approx 1.007$.
 \end{enumerate}
+
+\section{Implementaciones}
+
+\begin{itemize}
+    \item Algoritmo de bisección
+    \lstinputlisting[language=Python, firstline=4, lastline=32]{single-variable.py}
+\end{itemize}
 
 \end{document}

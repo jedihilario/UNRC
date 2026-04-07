@@ -20,6 +20,7 @@ def bisection (f: Callable[[float], float], a: float, b: float, eps: float, max_
 
         # Si se encontró la raíz, o la aproximación es suficientemente buena, retornar p_i
         if (f(p) == 0 or (b - a) / 2 < eps):
+            print(f'Step {i}')
             return p
 
         # Reasignar el borde según corresponda
@@ -30,7 +31,6 @@ def bisection (f: Callable[[float], float], a: float, b: float, eps: float, max_
 
     raise Exception(f'No se logró una aproximación lo suficientemente buena en {max_steps} pasos.')
 
-f = lambda x: x - np.pi
+f = lambda x: 2 + np.cos(np.pow(np.e, x) - 2) - np.pow(np.e, x)
 
-print(np.pi)
-print(bisection(f, 1, 1e200, 1e-10, 1001))
+print(bisection(f, 0.5, 1.5, 1e-3, 20))
