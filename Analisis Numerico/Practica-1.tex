@@ -1,5 +1,6 @@
 \documentclass[DIN, pagenumber=false, fontsize=11pt, parskip=half]{scrartcl}
 
+\usepackage{amsmath}
 \usepackage{amssymb}
 \usepackage[spanish]{babel}
 \usepackage[utf8]{inputenc}
@@ -103,13 +104,62 @@
     \[ |e_n| \le \frac{1}{2^n} < 10^{-3} \iff \log_2 (1000) < n \iff 9 < n \]
 
     De esta forma, se puede aplicar el método 9 veces para obtener $x \approx 1.007$.
+
+    \item Dada $f(x) = x^3 - x - 1$, analizaremos las iteraciones de punto fijo $g(x) = x^3 - 1$ y $h(x) = \sqrt[3]{x + 1}$.
+    \begin{enumerate}
+        \item Para ver cuál es adecuada, debemos ver que la misma cumpla con los requisitos impuestos por el teorema de punto fijo.
+        Veamos primero cuándo $|g'(x)| < 1$:
+
+        \begin{align*}
+            0 &\le 3x^2 < 1 \\
+            0 &\le x^2 < \frac{1}{3} \\
+            -\frac{1}{\sqrt{3}} &< x < \frac{1}{\sqrt{3}}
+        \end{align*}
+
+        Obteniendo así el intervalo $(-\frac{1}{\sqrt{3}}, \frac{1}{\sqrt{3}})$. Analizando qué pasa con las imágenes de $g$:
+
+        \begin{align*}
+            -\frac{1}{\sqrt{3}} &< x < \frac{1}{\sqrt{3}} \\
+            -\frac{1}{\sqrt{27}} &< x^3 < \frac{1}{\sqrt{27}} \\
+            -\frac{1}{\sqrt{27}} - 1 < -1 &< x^3 - 1 < \frac{1}{\sqrt{27}} - 1
+        \end{align*}
+
+        Deduciendo que $g$ no mapea el intervalo en sí mismo (esto se ve gracias a la cota inferior obtenida), por lo que $g$ no es óptima para la iteracion de punto fijo.
+
+        Analicemos ahora $h$. Trabajando su derivada:
+
+        \begin{align*}
+            0 &\le \frac{1}{3 \sqrt[3]{{(x+1)}^2}} < 1 \\
+            0 &\le \frac{1}{\sqrt[3]{{(x+1)}^2}} < 3 \\
+            0 &\le \frac{1}{{(x+1)}^2} < 27 \\
+            - \sqrt{27} &< \frac{1}{x+1} < \sqrt{27} \\
+        \end{align*}
+
+        Esto último ocurre sii $x+1 > \frac{1}{\sqrt{27}}$, o bien $x + 1 < -\frac{1}{\sqrt{27}}$. Comprobando rápidamente:
+
+        \begin{itemize}
+            \item Si $x + 1 < -\frac{1}{\sqrt{27}}$, entonces $\sqrt[3]{x+1} < -\frac{1}{\sqrt{3}}$. Esto es un problema ya que la existencia de imágenes en $(-1,-\frac{1}{3})$
+            muestra que el intervalo no se mapea en sí mismo.
+
+            \item Sin embargo, si $x + 1 > \frac{1}{\sqrt{27}}$, entonces $\sqrt[3]{x+1} > \frac{1}{\sqrt{3}}$. De esta forma obtengo una cota inferior sobre la cual puedo construir un intervalo que se mapee en sí mismo.
+            En particular, tomando $[0,2]$, obtengo que $0 < x < 2 \iff 1 < x+1 < 3 \iff 1 < \sqrt[3]{x+1} < \sqrt[3]{3} < 2$, consiguiendo así el intervalo que quería.
+        \end{itemize}
+
+        La continuidad de $h$ es trivial por ser composición de continuas, lo cual vale en todo intervalo.
+        de esta forma, concluyo que $h$ es la iteración de punto fijo adecuada, en el intervalo $[0,2]$.
+    \end{enumerate}
 \end{enumerate}
+
+\newpage
 
 \section{Implementaciones}
 
 \begin{itemize}
     \item Algoritmo de bisección
-    \lstinputlisting[language=Python, firstline=4, lastline=32]{single-variable.py}
+    \lstinputlisting[language=Python, firstline=4, lastline=31]{single-variable.py}
+
+    \item Algoritmo de punto fijo
+    \lstinputlisting[language=Python, firstline=33, lastline=48]{single-variable.py}
 \end{itemize}
 
 \end{document}

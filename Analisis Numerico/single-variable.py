@@ -20,7 +20,6 @@ def bisection (f: Callable[[float], float], a: float, b: float, eps: float, max_
 
         # Si se encontró la raíz, o la aproximación es suficientemente buena, retornar p_i
         if (f(p) == 0 or (b - a) / 2 < eps):
-            print(f'Step {i}')
             return p
 
         # Reasignar el borde según corresponda
@@ -31,6 +30,23 @@ def bisection (f: Callable[[float], float], a: float, b: float, eps: float, max_
 
     raise Exception(f'No se logró una aproximación lo suficientemente buena en {max_steps} pasos.')
 
-f = lambda x: 2 + np.cos(np.pow(np.e, x) - 2) - np.pow(np.e, x)
+# Implementación del método de punto fijo
+def fixed_point (g: Callable[[float], float], init: float, eps: float, max_steps: int) -> float:
+    p: float = np.inf
+    err: float = np.inf
 
-print(bisection(f, 0.5, 1.5, 1e-3, 20))
+    for i in range(max_steps):
+        p = g(init)
+        err = np.abs(p - init)
+
+        if (err < eps): 
+            print(f'Step {i}')
+            return p
+
+        init = p
+
+    raise Exception(f'No se logró una aproximación lo suficientemente buena en {max_steps} pasos.')
+
+f = lambda x: np.cbrt(x + 1)
+
+print(fixed_point(f, 1, 1e-5, 100))
