@@ -147,7 +147,29 @@
 
         La continuidad de $h$ es trivial por ser composición de continuas, lo cual vale en todo intervalo.
         de esta forma, concluyo que $h$ es la iteración de punto fijo adecuada, en el intervalo $[0,2]$.
+
+        \item Analizando $g''(x) = - \frac{2}{9 \sqrt[3]{{(x+1)}^5}}$ se puede ver que $g'$ tiene como máximo
+        $g'(0) = \frac{1}{3}$. Luego, basta tomar $k=\frac{1}{2}$ para acotar el error. Como sigue:
+
+        \begin{align*}
+            |e_n| \le k^n \max \{p_0 - a, b - p_0\} &< 10^{-3} \\
+            10^3 \max \{ p_0 - a, b - p_0 \} < \frac{1}{k^n} \\
+            \frac{1}{\log_2 (\frac{1}{k})} \cdot 10^3 \max \{ p_0 - a, b - p_0 \} < n
+        \end{align*}
+
+        Usando el intervalo inicial $[0,2]$ con $p_0=1$ y $k=\frac{1}{2}$, se tiene que:
+
+        \[ 10^3 < n \]
+
+        Ejecutando el algoritmo con esos parámetros se obtiene $x \approx 1.32$.
     \end{enumerate}
+
+    \item 
+        \begin{enumerate}
+            \item Se vera
+        \end{enumerate}
+
+    \item Analizando la expresión de $s(t) = s_0 - \frac{mg}{k}t + \frac{m^2 g}{k^2} (1 - e^{\frac{-kt}{m}})$
 \end{enumerate}
 
 \newpage
@@ -159,7 +181,7 @@
     \lstinputlisting[language=Python, firstline=4, lastline=31]{single-variable.py}
 
     \item Algoritmo de punto fijo
-    \lstinputlisting[language=Python, firstline=33, lastline=48]{single-variable.py}
+    \lstinputlisting[language=Python, firstline=33, lastline=53]{single-variable.py}
 \end{itemize}
 
 \end{document}

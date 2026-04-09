@@ -32,19 +32,24 @@ def bisection (f: Callable[[float], float], a: float, b: float, eps: float, max_
 
 # Implementación del método de punto fijo
 def fixed_point (g: Callable[[float], float], init: float, eps: float, max_steps: int) -> float:
+    # Inicializar la variable de iteración enésima y de error, en valores fuera de rango
     p: float = np.inf
     err: float = np.inf
 
+    # Iterar hasta una cantidad de { max_steps } inclusive
     for i in range(max_steps):
+        # Guardar el valor de la iteración y error actuales
         p = g(init)
         err = np.abs(p - init)
 
-        if (err < eps): 
-            print(f'Step {i}')
+        # Verificar si el error obtenido cumple con las condiciones dadas. En dicho caso, retornar el valor obtenido
+        if (err < eps):
             return p
 
+        # Almacenar el valor de iteracion actual para la próxima iteración
         init = p
 
+    # Lanzar una excepción si no se logra la aproximación deseada
     raise Exception(f'No se logró una aproximación lo suficientemente buena en {max_steps} pasos.')
 
 f = lambda x: np.cbrt(x + 1)
