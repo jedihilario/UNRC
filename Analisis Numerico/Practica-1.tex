@@ -124,7 +124,7 @@
             -\frac{1}{\sqrt{27}} - 1 < -1 &< x^3 - 1 < \frac{1}{\sqrt{27}} - 1
         \end{align*}
 
-        Deduciendo que $g$ no mapea el intervalo en sí mismo (esto se ve gracias a la cota inferior obtenida), por lo que $g$ no es óptima para la iteracion de punto fijo.
+        Deduciendo que $g$ no mapea el intervalo en sí mismo (esto se ve gracias a la cota inferior obtenida), por lo que $g$ no es óptima para la iteración de punto fijo.
 
         Analicemos ahora $h$. Trabajando su derivada:
 
@@ -169,7 +169,21 @@
             \item Se vera
         \end{enumerate}
 
-    \item Analizando la expresión de $s(t) = s_0 - \frac{mg}{k}t + \frac{m^2 g}{k^2} (1 - e^{\frac{-kt}{m}})$
+    \item Analizando la expresión de $s(t) = s_0 - \frac{mg}{k}t + \frac{m^2 g}{k^2} (1 - e^{\frac{-kt}{m}})$,
+    se puede ver que la expresión de sus derivadas en términos de $t$ tienden a una función exponencial con algún término polinómico, lo que aseguraría la eficacia del
+    método de Newton. En efecto:
+
+    \begin{align*}
+        s'(t) &= - \frac{mg}{k} + \frac{mg}{k} e^{\frac{-kt}{m}} \\
+        s''(t) &= - g e^{\frac{-kt}{m}}
+    \end{align*}
+
+    Las cuales son continuas por ser sumas y composiciones de continuas.
+    En condiciones de aplicar el método de Newton, tengo la iteración:
+
+    \[ p_n = p_{n-1} - \frac{s(p_{n-1})}{s'(p_{n-1})} \]
+
+    
 \end{enumerate}
 
 \newpage

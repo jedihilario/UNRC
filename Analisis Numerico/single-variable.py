@@ -52,6 +52,23 @@ def fixed_point (g: Callable[[float], float], init: float, eps: float, max_steps
     # Lanzar una excepción si no se logra la aproximación deseada
     raise Exception(f'No se logró una aproximación lo suficientemente buena en {max_steps} pasos.')
 
+def newton (init: float, f: Callable[[float], float], df: Callable[[float], float], eps: float, max_steps: int) -> float:
+    p: float = np.inf
+
+    for i in range(max_steps):
+        assert df(init) != 0
+
+        p = init - f(init)/df(init)
+        error = np.abs(p - init)
+
+        if (error < eps):
+            return p
+
+        init = p
+
+    # Lanzar una excepción si no se logra la aproximación deseada
+    raise Exception(f'No se logró una aproximación lo suficientemente buena en {max_steps} pasos.')
+
 f = lambda x: np.cbrt(x + 1)
 
 print(fixed_point(f, 1, 1e-5, 100))
