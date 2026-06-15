@@ -1,0 +1,17 @@
+; Set up values
+Load B v1
+Load A v2
+; Multiply with 16-bit registers and print result
+MultBA
+Out B
+; Reset values
+Load B v1
+Load A v2
+; Multiply with AR unit and print result
+iMultBA
+Out B
+
+Stop
+
+v1:  .data 2 20
+v2: .data 2 10
