@@ -6,20 +6,20 @@ ASM = nasm
 CFLAGS = -m32 -Wall
 ASMFLAGS = -f elf32
 
-TARGET = amor
+TARGET = executable
 
 all: $(TARGET)
 
-$(TARGET): n.o tomito.o
+$(TARGET): main.o sum.o
 	$(CC) $(CFLAGS) $^ -o $@
 
-n.o: n.c
+main.o: main.c
 	$(CC) $(CFLAGS) -c $< -o $@
 
-tomito.o: tomito.asm
+sum.o: sum.asm
 	$(ASM) $(ASMFLAGS) $< -o $@
 
-mdo:
+clean:
 	rm -f *.o $(TARGET)
 
 .PHONY: all clean
