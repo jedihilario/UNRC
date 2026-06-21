@@ -23,11 +23,18 @@ public class AdjacencyListIntGraph {
      */
     @SuppressWarnings("unchecked")
     public AdjacencyListIntGraph(int V) {
+        // Check the precondition
+        if (V < 0)
+            throw new IllegalArgumentException("The amount of vertices must be non-negative");
+
+        // Initialize with V vertices and no edges
         this.V = V;
         this.E = 0;
 
+        // Initialize empty adjacency list (null lists for each vertex)
         this.adj = new LinkedList[V];
 
+        // Create an empty list for each vertex
         for (int i = 0; i < V; i++) {
             this.adj[i] = new LinkedList<Integer>();
         }
@@ -38,15 +45,19 @@ public class AdjacencyListIntGraph {
      */
     @SuppressWarnings("unchecked")
     public AdjacencyListIntGraph(AdjacencyListIntGraph G) {
+        // Initialize V and E with the amount of vertices and edges of the parameter
         this.V = G.V();
         this.E = G.E();
 
+        // Initialize empty adjacency list
         this.adj = new LinkedList[this.V];
 
+        // Create an empty list for each vertex
         for (int i = 0; i < this.V; i++) {
             this.adj[i] = new LinkedList<Integer>();
         }
-
+        
+        // For each vertex, get the corresponding adj. list in G and add all neighbours to the adjacency list
         for (int i = 0; i < this.V; i++) {
             List<Integer> copy = G.adj(i);
             this.adj[i].addAll(copy);
@@ -78,11 +89,15 @@ public class AdjacencyListIntGraph {
      * @post Adds the undirected edge v-w to this graph.
      */
     public void addEdge(int v, int w) {
+        // Check that both parameters are valid vertices
         validateVertex(v);
         validateVertex(w);
 
+        // Add both edges from one parameter to another
         this.adj[v].add(w);
         this.adj[w].add(v);
+
+        // Increment the amount of edges
         this.E++;
     }
 
@@ -91,11 +106,15 @@ public class AdjacencyListIntGraph {
      * @post Returns the list of vertices adjacent to vertex v.
      */
     public List<Integer> adj(int v) {
+        // Check valid parameter
         validateVertex(v);
 
+        // Create a new list to return
         List<Integer> copy = new LinkedList<>();
+        // Get the adjecency list and add all vertices to the copy list
         copy.addAll(this.adj[v]);
 
+        // Return the copy
         return copy;
     }
 
@@ -104,9 +123,11 @@ public class AdjacencyListIntGraph {
      * @post Returns true iff there is an edge from v to w.
      */
     public boolean existsEdge(int v, int w) {
+        // Check valid parameters
         validateVertex(v);
         validateVertex(w);
 
+        // Verify if the adjacency list of v contains w, and return the result
         return this.adj[v].contains(w);
     }
 
@@ -115,8 +136,10 @@ public class AdjacencyListIntGraph {
      * @post Returns the degree of vertex v.
      */
     public int degree(int v) {
+        // Verify valid parameter
         validateVertex(v);
 
+        // Return the amount of elements in v's adjacency list
         return this.adj[v].size();
     }
 
@@ -124,12 +147,20 @@ public class AdjacencyListIntGraph {
      * @post Returns a string representation of this graph.
      */
     public String toString() {
+        // Initialize a new string
         String s = "";
+
+        // Iterate over each vertex
         for (int v = 0; v < V; v++) {
+            // Add the number of vertex
             s += v + ": ";
+
+            // Add each vertex w with and edge from v to w
             for (int w : adj[v]) {
                 s += w + " ";
             }
+
+            // Add a breakline character
             s += '\n';
         }
         return s;
