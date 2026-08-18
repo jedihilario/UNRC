@@ -1,0 +1,47 @@
+\begin{problem}{}{}
+
+    Analizar la validez de las siguientes afirmaciones:
+
+    \begin{enumerate}[(a)]
+        \item ${(2^{2^n})}^{2^k} = 2^{2^{n+k}}, n, k \in \mathbb{N}$.
+        \item ${(2^n)}^2 = 4^n, n \in \mathbb{N}$.
+        \item $(2n + 2)! = 2(n + 1)!$.
+    \end{enumerate}
+
+\end{problem}
+\vspace{1ex}
+
+\begin{enumerate}[(a)]
+    \item Conociendo las propiedades de las potencias, podemos realizar la siguiente deducción:
+    
+          \begin{tabular}{|l l r}
+             & ${(2^{2^n})}^{2^k}$ & \\
+            $=$ & $2^{2^n \cdot 2^k}$ & (doble exponente) \\
+            $=$ & $2^{2^{n+k}}$ & (potencias de igual base) \\
+          \end{tabular}
+
+    \item De manera análoga al anterior:
+
+          \begin{tabular}{|l l r}
+             & ${(2^n)}^2$ & \\
+            $=$ & $2^{n \cdot 2}$ & (doble exponente) \\
+            $=$ & $2^{2 \cdot n}$ & (conmutatividad del producto) \\
+            $=$ & ${(2^2)}^n$ & (doble exponente) \\
+            $=$ & $4^n$ & (aritmética) \\
+          \end{tabular}
+
+    \item Esto se puede pensar como una ``distributividad'' del factorial respecto del producto.
+          Pensarlo de esta forma ya permite intuir que la afirmación es falsa.
+          Formalmente, podemos tomar $n=1$ y ver que:
+
+          \begin{tabular}{|l l}
+             & $(2 \cdot 1 + 2)!$ \\
+            $=$ & $4!$ \\
+            $=$ & $24$ \\
+            $\neq$ & $4$ \\
+            $=$ & $2 \cdot 2!$ \\
+            $=$ & $2 \cdot (1+1)!$ \\
+          \end{tabular}
+
+          Y con este contraejemplo basta para ver que la afirmación es falsa. 
+\end{enumerate}

@@ -1,0 +1,49 @@
+\begin{problem}{}{}
+
+    Ídem (1), donde $a$, $b$, $c$ siempre son números enteros
+
+    \begin{enumerate}[(a)]
+        \item $c < 0$ implica que $0 < -c$.
+        \item $a + c < b + c$ implica que $a < b$.
+        \item $a < b$ y $c < 0$ implica que $b \cdot c < a \cdot c$.
+    \end{enumerate}
+
+\end{problem}
+\vspace{1ex}
+
+Seguimos en la misma línea del ejercicio anterior:
+
+\begin{enumerate}[(a)]
+    \item Este hecho es bastante usado y puede interpretarse como una simetría o ``espejo'' respecto del $0$ durante el cambio de signo.
+          Para probarlo basta ver que la adición del inverso aditivo permite alternar $c$ y $-c$ de ambos lados de la igualdad:
+
+          \begin{tabular}{|l l r}
+             & $c < 0 $ & \\
+            $\implies$ & $c + -c < -c$ & (existencia del inverso y compat.\ de suma) \\
+            $\iff$ & $0 < -c$ & (inverso aditivo y Leibniz) \\
+          \end{tabular}
+
+    \item Se resuelve en el mismo espíritu del inciso anterior:
+
+          \begin{tabular}{|l l r}
+             & $a + c < b + c$ & \\
+            $\implies$ & $a + c + (-c) < b + c + (-c)$ & (inverso aditivo y compat.\ de suma) \\
+            $\iff$ & $a + 0 < b + c$ & (inverso aditivo y Leibniz) \\
+            $\iff$ & $a < b$ & (neutro suma y Leibniz) \\
+          \end{tabular}
+
+    \item Esta es una forma particular de interpretar la regla de los signos. Por eso, usándola la demostración se vuelve casi inmediata. A continuación se da una prueba alternativa:
+          
+          \begin{tabular}{|l l r}
+             & $a < b$ & \\
+            $\implies$ & $a + (-a) < b + (-a)$ & (existencia del inverso y compat.\ de suma) \\
+            $\iff$ & $0 < b + (-a)$ & (inverso aditivo y Leibniz) \\
+            $\implies$ & $0 \cdot (-c) < (b + (-a)) \cdot (-c)$ & (inciso (a) y compat.\ del producto) \\
+            $\iff$ & $0 < (b + (-a)) \cdot (-c)$ & (absorvente del producto y Leibniz) \\
+            $\iff$ & $0 < b \cdot (-c) + (-a) \cdot (-c)$ & (distributiva) \\
+            $\iff$ & $0 < -(b \cdot c) + (-1) \cdot (-1) \cdot ac$ & (ej.\ (1.c), Leibniz y conmutatividad) \\
+            $\iff$ & $0 < ac + (-(bc))$ & (aritmética y conmutatividad) \\
+            $\implies$ & $0 + bc < ac + (-(bc)) + bc$ & (existencia del inverso y compat.\ suma) \\
+            $\iff$ & $bc < ac$ & (neutro e inverso aditivo, Leibniz) \\
+          \end{tabular}
+\end{enumerate}

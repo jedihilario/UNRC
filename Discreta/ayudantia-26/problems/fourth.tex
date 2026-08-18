@@ -1,0 +1,23 @@
+\begin{problem}{}{}
+
+    Demostrar que si un conjunto $X$ tiene mínimo, este es único.
+    Dicho más formalmente:
+    demostrar que si existen $c$, $c' \in X$ tal que $c \leq x$ y $c' \leq x$ para todo $x \in X$,
+    entonces $c = c'$.
+
+\end{problem}
+\vspace{1ex}
+
+Supongamos que existen $c, c' \in X$ satisfaciendo las condiciones dadas.
+Queremos ver que son iguales.
+Para lograr esto, un camino inteligente es tratar de utilizar la propiedad antisimétrica del orden ($a \le b \land b \le a \implies a = b$), siempre y cuando podamos relacionar $c$ con $c'$.
+Efectivamente, como ambos son mínimos del mismo conjunto, podemos razonar como sigue:
+
+\begin{itemize}
+    \item Como $c$ es mínimo, tenemos $c \le x$ para todo $x \in X$. Como $c' \in X$, en particular, concluímos que $c \le c'$.
+    \item De manera análoga al argumento anterior, podemos concluir que $c' \le c$.
+\end{itemize}
+
+Juntando ambas conclusionem, tenemos que $c \le c' \land c' \le c$.
+Con esto, la propiedad antisimétrica nos asegura que $c = c'$, como queríamos probar.
+Así, concluímos la prueba.

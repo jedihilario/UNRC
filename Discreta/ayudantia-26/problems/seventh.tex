@@ -1,0 +1,77 @@
+\begin{problem}{}{}
+
+    Demostrar por inducción las siguientes igualdades:
+
+    \begin{enumerate}[(a)]
+        \item $\sum_{k=0}^{n} (2k + 1) = {(n + 1)}^2, n \in \mathbb{N}_0$.
+        \item $\sum_{k=0}^{n} a^k = \frac{a^{n + 1} - 1}{a - 1}, \text{ donde } a \in \mathbb{R}, a \neq 0, a \neq 1, n \in \mathbb{N}_0$.
+        \item $\sum_{i=1}^{n} (i^2 + 1) \cdot i! = n \cdot (n + 1)!, n \in \mathbb{N}$.
+    \end{enumerate}
+
+\end{problem}
+\vspace{1ex}
+
+\begin{enumerate}[(a)]
+    \item \begin{itemize}
+        \item \textbf{Caso Base:} Para $n = 0$, tenemos que $\sum_{k=0}^{0} (2k + 1) = 2 \cdot 0 + 1 = 1$ y ${(0 + 1)}^2 = 1$.
+              Con esto conluimos que vale la igualdad.
+        \item \textbf{Caso Inductivo:} Sea $n \in \mathbb{N}_0$.
+              Tenemos como hipótesis inductiva $\sum_{k=0}^{n} (2k + 1) = {(n+1)}^2$.
+              Podemos ver ahora que la igualdad vale para $n + 1$ como sigue:
+
+              \begin{tabular}{|l l r}
+                 & $\sum_{k=0}^{n + 1} (2k + 1)$ & \\
+                $=$ & $\sum_{k=0}^{n} (2k + 1) + (2(n+1) + 1)$ & (expansión de $\Sigma$) \\
+                $=$ & ${(n+1)}^2 + 2(n+1) + 1$ & (hipótesis inductiva) \\
+                $=$ & ${(n+2)}^2$ & (cuadrado de un binomio)* \\
+                $=$ & ${((n + 1) + 1)}^2$ & ($2 = 1 + 1$ y asociatividad) \\
+              \end{tabular}
+
+              El paso descrito en $*$ vale ya que ${((n+1)+1)}^2 = {(n+1)}^2 + 2 \cdot (n+1) \cdot 1 + 1$ por la identidad del cuadrado de un binomio.
+              Aplicando este hecho de derecha a izquierda obtenemos la igualdad usada.
+
+    \end{itemize}
+        Finalmente, habiendo probado los casos base e inductivo, el principio de inducción nos permite concluir que la igualdad vale para todo entero no negativo.
+
+    \item \begin{itemize}
+        \item \textbf{Caso Base:} Para $n=0$ tenemos que $\sum_{k=0}^{0} a^k = a^0 = 1 = \frac{a - 1}{a - 1} = \frac{a^{0+1 - 1}}{a - 1}$, por lo que vale el caso base.
+        \item \textbf{Caso Inductivo:} Sea $n \in \mathbb{N}_0$, nuestra hipótesis inductiva es $\sum_{k=0}^{n} a^k = \frac{a^{n+1} - 1}{a - 1}$.
+              Veamos ahora que la igualdad vale para $n+1$:
+
+              \begin{tabular}{|l l r}
+                 & $\sum_{k=0}^{n+1} a^k$ & \\
+                $=$ & $\sum_{k=0}^{n} a^k + a^{n+1}$ & (expansión de $\Sigma$) \\
+                $=$ & $\frac{a^{n+1} - 1}{a - 1} + a^{n+1}$ & (hipótesis inductiva) \\
+                $=$ & $\frac{a^{n+1} - 1}{a - 1} + \frac{a^{n+1} \cdot (a-1)}{a-1}$ & (neutro del producto y reescritura) \\
+                $=$ & $\frac{a^{n+1} - 1}{a - 1} + \frac{a^{n+1} \cdot a - a^{n+1}}{a - 1}$ & (distributividad) \\
+                $=$ & $\frac{a^{n+2} + (a^{n+1} - a^{n+1}) - 1}{a - 1}$ & (suma de fracciones y prop.\ de potencias) \\
+                $=$ & $\frac{a^{n+2} - 1}{a - 1}$ & (asociatividad e inverso aditivo) \\
+              \end{tabular}
+
+              Y con esto llegamos a probar que la identidad vale en $n+1$.
+    \end{itemize}
+
+        El prinicipio de inducción nos asegura que, habiendo probado estos dos pasos, la proposición dada vale para todo entero no negativo.
+
+    \item \begin{itemize}
+        \item \textbf{Caso Base:} Para $n=1$ tenemos que $\sum_{i=1}^{1} (i^2 + 1) \cdot i! = (1 + 1) \cdot 1! = 2 = 1 \cdot 2! = 1 \cdot (1 + 1)!$, de lo cual conluimos el caso base.
+        \item \textbf{Caso Inductivo} Supongamos que $\sum_{i=1}^{n} (i^2 + 1) \cdot i! = n \cdot (n+1)!$ para $n \in \mathbb{N}$.
+              Veamos ahora que:
+
+              \begin{tabular}{|l l r}
+                 & $\sum_{i=1}^{n+1} (i^2 + 1) \cdot i!$ & \\
+                $=$ & $\sum_{i=1}^{n} (i^2 + 1) \cdot i! + ({(n+1)}^2 + 1) \cdot (n+1)!$ & (expansión de $\Sigma$) \\
+                $=$ & $n \cdot (n+1)! + ({(n+1)}^2 + 1) \cdot (n+1)!$ & \\
+                $=$ & $(n + 1)! \cdot ({(n+1)}^2 + n + 1)$ & (factor común) \\
+                $=$ & $(n+1)! \cdot (n^2 + 2n + 1 + n + 1)$ & (cuadrado de un binomio) \\
+                $=$ & $(n+1)! \cdot (n^2 + 3n + 2)$ & (álgebra) \\
+                $=$ & $(n+1)! \cdot (n + 2) \cdot (n + 1)$ & (factorización $n^2 + 3n + 2 = (n + 2) \cdot (n + 1)$) \\
+                $=$ & $(n+2)! \cdot (n + 1)$ & (definición de factorial) \\
+                $=$ & $(n+1) \cdot (n+2)!$ & (conmutatividad) \\
+              \end{tabular}
+
+              Con esto conseguimos la igualdad que queríamos.
+    \end{itemize}
+
+        Con estos dos casos probados, podemos concluir, por principio de inducción, que la igualdad es válida para todo número natural.
+\end{enumerate}

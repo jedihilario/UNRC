@@ -1,0 +1,43 @@
+\begin{problem}{}{}
+
+    Sea ${\{ a_n \}}_{n \in \mathbb{N}_0}$ la sucesión definida recursivamente por:
+
+    \[
+    \begin{cases}
+        a_0 = 1 \\
+        a_1 = 1 \\
+        a_n = 3 a_{n-1} + (n-1) (n-3) a_{n-2}, \text{ para } n \ge 2
+    \end{cases}
+    \]
+
+    Probar que $a_n = n!$ para todo $n \in \mathbb{N}_0$.
+
+\end{problem}
+\vspace{1ex}
+
+Al igual que en el ejercicio anterior, podemos usar inducción completa para probar la fórmula general dada.
+Como sigue:
+
+\begin{itemize}
+    \item \textbf{Casos Base:} Tenemos que, para $n=0$, $a_0 = 1 = 0!$. También, para $n=1$, $a_1 = 1 = 1!$.
+          Con estas dos igualdades vemos que la propiedad vale para los dos casos base.
+
+    \item \textbf{Caso Inductivo:} Supongamos que $a_h = h!$ para todo $h$ tal que $0 \le h \le n$ donde $n \in \mathbb{N}_{\ge 2}$.
+          Veamos ahora que $a_{n+1} = (n+1)!$.
+          Como sigue:
+
+          \begin{tabular}{|l l r}
+             & $a_{n+1}$ & \\
+            $=$ & $3 a_n + ((n+1)-1)((n+1)-3) a_{n-1}$ & (definición recursiva) \\
+            $=$ & $3 \cdot n! + n(n-2) \cdot (n-1)!$ & (hipótesis inductiva y aritmética) \\
+            $=$ & $3 \cdot n! + (n-2) \cdot n!$ & (conmutatividad, asociatividad y def.\ de factorial) \\
+            $=$ & $(3 + n - 2) \cdot n!$ & (factor común) \\
+            $=$ & $(n + 1) \cdot n!$ & (conmutatividad, asociatividad y aritmética) \\
+            $=$ & $(n+1)!$ & (definición de factorial)
+          \end{tabular}
+
+          Y de esta forma concluimos que la igualdad se sostiene para $n+1$.
+          Con esto terminamos el caso inductivo.
+\end{itemize}
+
+Finalmente, habiendo probado los casos base y el inductivo, podemos concluir a través del principio de inducción completa que la igualdad vale para todo entero no negativo.

@@ -1,0 +1,38 @@
+\begin{problem}{}{}
+
+    Hallar $n_0 \in \mathbb{N}$ tal que $\forall n \ge n_0$ se cumpla que
+    $n^2 \ge 11 \cdot n + 3$, y usar el principio de inducción para probar dicha desigualdad.
+
+\end{problem}
+\vspace{1ex}
+
+Primero, veamos una forma práctica de deducir qué valor $n_0$ satisface la desigualdad sin necesidad de resolver ecuaciones en números reales.
+Si analizamos la expresión, vemos que cuando $n \le 11$ se cumple también $n \cdot n \le 11 \cdot n$ por compatibilidad del producto con el orden (véase que $n$ es siempre no negativo).
+Luego, es claro que $n^2 < 11 \cdot n + 3$ siempre que $n \le 11$.
+De esto último, la situación para $n=12$ es una buena candidata para la prueba.
+En efecto, podemos ver que $n=12$ implica $n^2 = 12 \cdot 12 = 11 \cdot 12 + 12$.
+Es claro que esta última expresión cumple $11 \cdot 12 + 12 \ge 11 \cdot 12 + 3$ (esto equivale a $144 \ge 135$), por lo que $n_0 = 12$ es el valor inicial que buscamos.
+
+Probemos ahora la desigualdad procediendo por inducción:
+
+\begin{itemize}
+    \item \textbf{Caso Base:} Como vimos arriba, la propiedad se cumple para $n_0 = 12$.
+    
+    \item \textbf{Caso inductivo:} Sea $k \in \mathbb{N}$, supongamos que $k^2 \ge 11 \cdot k + 3$ (hipótesis inductiva).
+          Veamos que la propiedad se cumple para $k + 1$. Como sigue:
+
+          \begin{tabular}{|l l r}
+             & ${(k+1)}^2$ & \\
+            $=$ & $k^2 + 2k + 1$ & (cuadrado de un binomio) \\
+            $\ge$ & $11 \cdot k + 3 + 2k + 1$ & (hipótesis inductiva) \\
+            $=$ & $11 \cdot k + 2k + 4$ & (aritmética) \\
+            $\ge$ & $11 \cdot k + 24 + 4$ & (puesto que $k \ge 12 \implies 2k \ge 24$) \\
+            $=$ & $11 \cdot (k+1) + 13 + 4$ & (usando $24 = 11 + 13$ y factor común) \\
+            $\ge$ & $11 \cdot (k+1) + 3$ & (puesto que $13 + 4 = 17 \ge 3$) \\
+          \end{tabular}
+
+          Y por transitividad del orden se llega a que ${(k+1)}^2 \ge 11 \cdot (k+1) + 3$ simepre que $k^2 \ge 11 \cdot k + 3$.
+          Con esto queda probado el caso inductivo.
+\end{itemize}
+
+Finalmente, habiendo probado ambos casos, podemos concluir gracias al principio de inducción que la desigualdad vale para todo natural mayor que doce.

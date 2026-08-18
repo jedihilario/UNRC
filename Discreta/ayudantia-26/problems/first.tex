@@ -1,0 +1,50 @@
+\begin{problem}{}{}
+
+    Demostrar las siguientes afirmaciones, donde $a$, $b$ son siempre números enteros.
+    Justificar cada uno de los pasos en cada demostración indicando el axioma o resultado que utiliza.
+
+    \begin{enumerate}[(a)]
+        \item $a + a = a$ implica que $a = 0$.
+        \item $(a + b) \cdot c = a \cdot c + b \cdot c$.
+        \item $-a = (-1) \cdot a$.
+    \end{enumerate}
+
+\end{problem}
+\vspace{1ex}
+
+Vamos a ver cómo, partiendo desde los axiomas dados en clase y explicitando cada paso, podemos demostrar cada una de las proposiciones dadas:
+
+\begin{enumerate}[(a)]
+    \item La idea intuitiva radica en usar el axioma de inverso aditivo hasta lograr eliminar las ``a'' del lado izquierdo. Como sigue: \\
+        \begin{tabular}{|l l r}
+             & $a + a = a$ & \\
+            $\implies$ & $a + a + (-a) = a + (-a)$ & (propiedad uniforme y existencia del inverso aditivo) \\
+            $\iff$ & $a + (a + (-a)) = (a + (-a))$ & (propiedad asociativa de la suma) \\
+            $\iff$ & $a + 0 = 0$ & (Leibniz) \\
+            $\iff$ & $a = 0$ & (elemento neutro de la suma y Leibniz) \\
+        \end{tabular}
+
+        De la propiedad transitiva de la implicación, se deduce la afirmación deseada.
+
+    \item Analizando la expresión, este es una versión del axioma de distributividad en orden inverso.
+          Por esto, podemos partir de este y usar los axiomas de conmutatividad para acomodar el resultado.
+          Como sigue: \\
+          \begin{tabular}{|l l r}
+             & $c \cdot (a + b) = c \cdot a + c \cdot b$ & (axioma de distributividad) \\
+             $\iff$ & $(a + b) \cdot c = a \cdot c + b \cdot c$ & (conmutatividad y Leibniz) \\
+          \end{tabular}
+
+          De esta forma vemos que la identidad dada es siempre verdadera.
+
+    \item Finalmente, podemos pensar la igualdad como \textit{``El inverso aditivo de $a$ es $(-1)\cdot a$''}.
+          Para esto, podemos probar que la suma de $(-1) \cdot a$ con $a$ es nula. Como sigue: \\
+          \begin{tabular}{|l l r}
+             & $a + (-1) \cdot a$ & \\
+             $=$ & $1 \cdot a + (-1) \cdot a$ & (neutro multiplicativo) \\
+             $=$ & $(1 + -1) \cdot a$ & (inciso (b)) \\
+             $=$ & $0 \cdot a$ & (inverso aditivo y Leibniz) \\
+             $=$ & $0$ & (elemento absorvente del producto) \\
+          \end{tabular}
+
+          De este último, necesariamente $(-1) \cdot a$ es el inverso multiplicativo de $a$ y por unicidad del opuesto es igual a $-a$.
+\end{enumerate}

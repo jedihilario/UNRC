@@ -1,0 +1,74 @@
+\begin{problem}{}{}
+
+    Probar las siguientes afirmaciones, justificando los pasos que realiza.
+
+    \begin{enumerate}[(a)]
+        \item Si $0 < a$ y $0 < b$ entonces $a < b$ si y sólo si $a^2 < b^2$.
+        \item Si $a \neq 0$ entonces $a^2 > 0$.
+        \item Si $a \neq b$ entonces $a^2 + b^2 > 0$.
+    \end{enumerate}
+
+\end{problem}
+\vspace{1ex}
+
+\begin{enumerate}[(a)]
+    \item Supongamos que $a, b > 0$ y probemos ambos sentidos de la equivalencia:
+    
+          $\implies$ Supongamos que $a < b$. Como sigue: \\
+
+          \begin{tabular}{|l l r}
+             & $a < b$ & \\
+            $\implies$ & $a \cdot a < b \cdot a \land a \cdot b < b \cdot b$ & (compat.\ del producto) \\
+            $\iff$ & $a^2 < ab \land ab < b^2$ & (conmutatividad y reescritura) \\
+            $\implies$ & $a^2 < b^2$ & (transitividad del orden) \\
+          \end{tabular}
+
+          Y esto es lo que queríamos probar.
+
+          $\impliedby$ Podemos aprovechar la prueba de la ``ida'' y razonar por contradicción.
+          Supongamos que $a^2 < b^2$ y $b \le a$.
+          La igualdad es el caso más fácil e inmediato.
+          Si $a = b$, entonces $a^2 = b^2$, lo que contradice la primera hipótesis.
+          Analicemos ahora qué pasa si $b < a$.
+          Aplicando el inciso anterior ($x < y \implies x^2 < y^2$) a la segunda hipótesis, obtenemos que se verifica $b^2 < a^2$.
+          Sin embargo, esto contradice la primera hipótesis $a^2 < b^2$ y produce una contradicción.
+          Esto ocurre por haber supuesto que $b < a$.
+          Luego, $a < b$.
+
+          Con ambas direcciones verificadas, concluimos que vale la equivalencia.
+
+    \item Supongamos que $a \ne 0$. La ley de tricotomía nos asegura que $a < 0$ o bien $0 < a$.
+          Basta razonar por casos para ver que $a^2 > 0$. Si $a < 0$:
+
+          \begin{tabular}{|l l r}
+             & $a < 0$ & \\
+            $\implies$ & $a \cdot a > 0 \cdot a$ & (ej.\ (2.c)) \\
+            $\iff$ & $a^2 > 0$ & (absorvente del producto y reescritura) \\
+          \end{tabular}
+
+          Ahora si $0 < a$:
+
+          \begin{tabular}{|l l r}
+             & $0 < a$ & \\
+            $\implies$ & $0 \cdot a < a \cdot a$ & (compat.\ del producto) \\
+            $\iff$ & $0 < a^2$ & (absorvente del producto y reescritura) \\
+          \end{tabular}
+
+          Con ambos casos probados, conluímos lo que queríamos.
+
+    \item Supongamos $a \neq b$. De esta condición podemos ver que al menos uno de los dos es no nulo.
+          Analizando sólo los peores casos (completar el resto):
+          
+          \begin{tabular}{|l l r}
+             & $a \neq b \land a = 0 \implies 0 \neq b$ & (1) \\
+             & $a \neq b \land b = 0 \implies a \neq 0$ & (2) \\
+          \end{tabular}
+
+          En cualquier caso, se puede aplicar el inciso anterior sobre el elemento no nulo y concluir que su cuadrado es positivo.
+          Con esto basta para concluir lo que se quiere. Como sigue:
+
+          \begin{tabular}{|l l r}
+            $\implies$ & $b^2 > 0 \implies a^2 + b^2 > 0$ & (continuación (1)) \\
+            $\implies$ & $a^2 > 0 \implies a^2 + b^2 > 0$ & (continuación (2)) \\
+          \end{tabular}
+\end{enumerate}
